@@ -1,0 +1,40 @@
+﻿SOURCE CODE: 
+import cv2 
+import numpy as np 
+#To load the image and display 
+image=cv2.imread("image.jpeg") 
+cv2.imshow("original_image",image) 
+#The following command waits till we press any key cv2.waitKey(0) 
+#Defining colours 
+green=(0,255,0) 
+red=(0,0,255) 
+blue=(255,0,0) 
+white=(255,255,255) 
+black=(0,0,0) 
+#Position of the text is defined as z 
+z=(15,25) 
+#To convert BGR to RGB and to write text on the image rgb=cv2.cvtColor(image,cv2.COLOR_BGR2RGB) image_rgb=cv2.putText(rgb,"RGB",z,3,1,white,1) cv2.imwrite('image_rgb.jpeg',image_rgb) cv2.imshow("image_rgb",image_rgb) 
+cv2.waitKey(0) 
+#To convert BGR to HSV and to write text on the image hsv=cv2.cvtColor(image,cv2.COLOR_BGR2HSV) image_hsv=cv2.putText(hsv,"HSV",z,3,1,white,1) cv2.imwrite('image_hsv.jpeg',image_hsv) cv2.imshow("image_hsv",image_hsv)
+cv2.waitKey(0) 
+#To convert BGR to LAB and to write text on the image lab=cv2.cvtColor(image,cv2.COLOR_BGR2LAB) image_lab=cv2.putText(lab,"LAB",z,3,1,white,1) cv2.imwrite('image_lab.jpeg',image_lab) 
+cv2.imshow("image_lab",image_lab) 
+cv2.waitKey(0) 
+#To convert BGR to GRAY and to write text on the image gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY) image_gray=cv2.putText(gray,"GRAY",z,3,1,white,1) cv2.imwrite('image_gray.jpeg',image_gray) cv2.imshow("image_gray",image_gray) 
+cv2.waitKey(0) 
+#To close all windows created till now 
+cv2.destroyAllWindows()
+INPUT: IMAGE 
+  
+
+OUTPUT: 
+BGR TO RGB: 
+  
+
+BGR TO HSV:
+  
+
+BGR TO LAB: 
+  
+
+BGR TO GRAY:

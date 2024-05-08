@@ -1,0 +1,22 @@
+﻿EXP 9:
+3D RECONSTRUCTION
+
+
+CODE:
+
+
+import cv2 as cv
+from matplotlib import pyplot as plt
+
+
+imgR = cv.imread('right1.jpg', cv.IMREAD_GRAYSCALE)
+imgL = cv.imread('left1.jpg', cv.IMREAD_GRAYSCALE)  
+
+
+stereo = cv.StereoBM_create(numDisparities=16, blockSize=15)
+disparity = stereo.compute(imgL, imgR)
+
+
+plt.imshow(disparity, cmap='gray')  
+plt.colorbar()
+plt.show()

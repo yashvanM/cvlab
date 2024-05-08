@@ -1,0 +1,67 @@
+﻿SOURCE CODE: 
+import cv2 
+import numpy as np 
+#To load the image and display 
+image=cv2.imread("image.jpeg") 
+cv2.imshow("original_image",image) 
+#The following command waits till we press the key cv2.waitKey(0) 
+#Defining colours 
+green=(0,255,0) 
+red=(0,0,255) 
+blue=(255,0,0) 
+white=(255,255,255) 
+black=(0,0,0) 
+#To find the dimensions of the image 
+print("The original dimension") 
+height,weight,_=image.shape 
+print('width:' ,weight) 
+print('height:',height) 
+#Drawing a line, x,y are the coordinates of the 2 terminal points x=(50,190) 
+y=(200,190) 
+#FORMAT cv2.line(image_name,start point,end point,color,thickness) line=cv2.line(image,x,y, white, 3) cv2.imwrite('line.jpeg',line) 
+cv2.imshow("line",line)
+cv2.waitKey(0) 
+#Adding text to the image,z is the coordinate of the position 
+z=(15,25) 
+#FORMAT 
+cv2.putText(image_name,text,position,font,scale,color,thickness) text=cv2.putText(image,"hello",z,2,1,white,2) 
+cv2.imwrite('text.jpeg',text) 
+cv2.imshow("text",text) 
+cv2.waitKey(0) 
+#Drawing a circle on the image, q is the center of the circle 
+q=(150,90) 
+#FORMAT cv2.circle(image_name,center,radius,color,thickness) 
+circle=cv2.circle(image,q,80,green,2) 
+cv2.imwrite('circle.jpeg',circle) 
+cv2.imshow("circle",circle) 
+cv2.waitKey(0) 
+#Drawing an rectangle on the image,a is the top left coordinate, b is the bottom right coordinate a=(14,2) 
+b=(92,32) 
+#FORMAT cv2.rectangle(image_name,top left coordinate,bottom right coordinate,color,thickness) rectangle=cv2.rectangle(image,a,b,white,2) cv2.imwrite('rectangle.jpeg',rectangle) 
+cv2.imshow("rectangle",rectangle)
+cv2.waitKey(0) 
+#Drawing an ellipse on the image, c is the major axis length and d is the minor axis length c=(90,155) 
+d=(30,35) 
+#FORMAT cv2.ellipse(image_name,major axis length,minor axis length,angle,start angle,end angle,color,thickness) 
+ellipse=cv2.ellipse(image,c,d,90,0,360,red,2) 
+cv2.imwrite('ellipse.jpeg',ellipse) 
+cv2.imshow("ellipse",ellipse) 
+cv2.waitKey(0) 
+#To close all windows created till now 
+cv2.destroyAllWindows()
+INPUT: IMAGE 
+  
+OUTPUT: Original Dimensions 
+  
+
+LINE: 
+  
+
+TEXT:
+  
+
+CIRCLE: 
+  
+RECTANGLE: 
+  
+ELLIPSE:

@@ -1,0 +1,97 @@
+﻿SOURCE CODE: 
+import cv2 
+import numpy as np 
+#a) To load the image and display 
+image=cv2.imread("image.jpeg") 
+cv2.imshow("original_image",image) 
+#The following command waits till we press any key cv2.waitKey(0) 
+#To find the dimensions of the image 
+print("The original dimension") 
+height,weight,_=image.shape 
+print('width:' ,weight) 
+print('height:',height) 
+#To save/write the image in the directory chosen cv2.imwrite("original_image.jpeg",image) 
+#b) cropping of an image 
+cropped_image=image[10:220,10:100] cv2.imwrite('cropped_image.jpeg',cropped_image ) cv2.imshow("cropped_image",cropped_image) cv2.waitKey(0) 
+#c) resizing of an image 
+resized_image=cv2.resize(image,(450,500)) cv2.imwrite('resized_image.jpeg',resized_image ) cv2.imshow("resized_image",resized_image) cv2.waitKey(0) 
+#To find the dimensions of the image
+print("The resized dimension") 
+height,weight,_=resized_image.shape 
+print('width:' ,weight) 
+print('height:',height) 
+#d) grayscaling an image 
+gray_image=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY) 
+cv2.imwrite('gray_image.jpeg',gray_image) 
+cv2.imshow("gray_image",gray_image) 
+cv2.waitKey(0) 
+#e) Thresholding an image with binary 
+threshold=100 
+ret,thresholded_image=cv2.threshold(gray_image,threshold,255,cv2.THRESH_BINARY) cv2.imwrite('thresholded_image.jpeg',thresholded_image) 
+cv2.imshow("thresholded_image",thresholded_image) 
+cv2.waitKey(0) 
+#f) Thresholding an image with binary inversion 
+threshold=150 
+ret,thresholded_binaryinv_image=cv2.threshold(gray_image,threshold,255,cv2.THRESH_BINARY_IN V) 
+cv2.imwrite('thresholded_binaryinv_image.jpeg',thresholded_binaryinv_image ) cv2.imshow("thresholded__binaryinv_image",thresholded_binaryinv_image) cv2.waitKey(0) 
+#g) Contouring of an image 
+#Defining colours 
+green=(0,255,0) 
+red=(0,0,255) 
+blue=(255,0,0)
+white=(255,255,255) 
+black=(0,0,0) 
+contours,hierarchy=cv2.findContours(image=thresholded_image,mode=cv2.RETR_TREE,method=cv 2 .CHAIN_APPROX_NONE) 
+image_copy=image.copy() 
+cv2.drawContours(image=image_copy,contours=contours,contourIdx= - 
+1,color=red,thickness=2,lineType=cv2.LINE_AA) 
+cv2.imwrite('image_copy.jpeg',image_copy) 
+cv2.imshow("image_copy",image_copy) 
+cv2.waitKey(0) 
+#h)Blob detection 
+# Set up the detector with custom parameters 
+params = cv2.SimpleBlobDetector_Params() 
+# Change thresholds 
+params.minThreshold = 5 
+params.maxThreshold = 250 
+params.filterByArea = True 
+params.minArea = 50 
+params.filterByCircularity = False 
+params.filterByConvexity = False 
+params.filterByInertia = False 
+detector = cv2.SimpleBlobDetector_create(params) 
+# Detect blobs 
+keypoints = detector.detect(image)
+# Draw detected blobs as red circles 
+blank = np.zeros((1, 1)) 
+blobs = cv2.drawKeypoints(image, keypoints, blank, (0, 0, 255),cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS) 
+cv2.imshow("Blob_detected_image", blobs) 
+cv2.imwrite("blob_detected_image.jpeg",blobs ) cv2.waitKey(0) 
+#To close all windows created till now 
+cv2.destroyAllWindows() 
+INPUT: IMAGE 
+  
+
+OUTPUT: Original Dimensions 
+  
+
+ORIGINAL IMAGE:
+  
+
+CROPPED IMAGE: 
+  
+
+RESIZED IMAGE: 
+  
+OUTPUT: Resized Dimensions:
+  
+
+GRAYSCALED IMAGE: 
+  
+THRESHOLDED IMAGE WITH BINARY: 
+  
+
+THRESHOLDED IMAGE WITH BINARY INVERSION:  
+CONTOURED IMAGE: 
+  
+BLOB DETECTED IMAGE:
